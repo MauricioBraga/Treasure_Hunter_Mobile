@@ -30,7 +30,7 @@ public class TelaInicialGameState : GameBaseState
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             // muda para o próximo estado.
-            gameState.switchState(gameState.telaCreditosState);
+            gameState.switchState(gameState.playingState);
         }
 
         if (timer < tempo_mudança)
@@ -47,7 +47,7 @@ public class TelaInicialGameState : GameBaseState
             }
             else
             {
-                gameState.switchState(gameState.telaCreditosState);
+                gameState.switchState(gameState.playingState);
             }
         }
 
