@@ -3,7 +3,7 @@ using UnityEngine;
 public class TelaInicialGameState : GameBaseState
 {
     private GameObject telaInicialJogo;
-
+    private GameObject musicaTelaTituloJogo;
 
     private float tempo_mudança = 1;
     private float timer;
@@ -13,7 +13,7 @@ public class TelaInicialGameState : GameBaseState
     {
         Debug.Log("Entramos na Tela inicial.");
         timer = 0;
-        contador = 10;
+        contador = 30;
         gameState.mensagem.text = "";
 
         // pega o game object com a tela de título, para poder ativar / desativar
@@ -23,6 +23,8 @@ public class TelaInicialGameState : GameBaseState
         // ativa o sprite render do gameObject da tela de título, exibindo-a na tela.
         telaInicialJogo.GetComponent<SpriteRenderer>().enabled = true;
 
+        musicaTelaTituloJogo = GameObject.Find("aleste_title_theme");
+        musicaTelaTituloJogo.GetComponentInParent<AudioSource>().Play();
     }
 
     public override void updateState(GameStateManager gameState)
@@ -58,6 +60,8 @@ public class TelaInicialGameState : GameBaseState
         Debug.Log("Saindo da Tela inicial.");
         // desativa o sprite render do gameObject da tela de título, escondendo-a.
         telaInicialJogo.GetComponent<SpriteRenderer>().enabled = false;
+        // Encerra a execução da música 
+        musicaTelaTituloJogo.GetComponentInParent<AudioSource>().Stop();
     }
 }
 
